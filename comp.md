@@ -48,10 +48,37 @@ chaque consommateur reprend la lecture du début par défaut mais on peut préci
 * Autre : 
 	* Kafka :
 	* Pulsar:
+# Sources
+## Kafka
+Documentation officielle kafka
+[Doc](http://kafka.apache.org/documentation.html)
+[Article scientifique](https://www.microsoft.com/en-us/research/wp-content/uploads/2017/09/Kafka.pdf)
 
-source :
-doc officielle
-voir les onglets kafka et pulsar
+[Résumé](https://www.freecodecamp.org/news/what-to-consider-for-painless-apache-kafka-integration-df559e828876/)
+
+## Pulsar
+Documentation officielle pulsar
+[Doc](https://pulsar.apache.org/docs/en/standalone/)
+[Source](https://github.com/apache/pulsar)
+
+
+
+[Intro à Pulsar](https://blog.univalence.io/un-apercu-dapache-pulsar/) 12/06/19
+[Résumé Pulsar](https://jack-vanlightly.com/blog/2018/10/2/understanding-how-apache-pulsar-works) 13/06/19
+
+
+
+## Comparatif
+
+[apache-kafka-vs-apache-pulsar](https://blog.univalence.io/apache-kafka-vs-apache-pulsar/)
+12/06/19
+
+https://stackoverflow.com/questions/46048608/what-are-the-advantages-and-disadvantages-of-kafka-over-apache-pulsar 12/06/19
+****************************
+
+[apache-kafka-vs-apache-pulsar](https://streaml.io/blog/pulsar-streaming-queuing) 12/06/19
+
+https://streaml.io/blog/pulsar-segment-based-architecture  12/06/19
 
 
 
