@@ -1,5 +1,5 @@
 # Explications rapides
-La différence entre le reader et le consumer est que le reader ne reçoit les messages que s'il est connecté quand les messages sont envoyés.
+La différence entre le reader et le consumer est que le consumer ne reçoit les messages que s'il est connecté quand les messages sont envoyés.
 
 Création url :
 * Pour un producteur:
@@ -23,7 +23,7 @@ Dans conf/broker.conf mettre :
 Pour faire communiquer les consommateurs, readers et producteurs, il faut ouvrir les fichiers html dans un navigateur et regarder dans la console.
 
 * Lancer un serveur avec `bin/pulsar standalone`
-* Lancer la websocket (?) : `bin/pulsar-daemon start websocket`
+* Lancer la websocket : `bin/pulsar-daemon start websocket`
 * Au choix:
   * prod.html lance un producteur envoyant 2 messages sur topicoast
   * cons.html lance un consommateur lisant sur topicoast et topishara
