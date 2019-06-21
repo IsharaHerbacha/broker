@@ -1,24 +1,27 @@
 // reader multi topics qui envoie des messages
 "use strict";
-let topic =
-    "ws://localhost:8080/ws/v2/reader/persistent/public/default/topicoast/?messageId=earliest", // on précise à partir de quel messageid on commence à lire
-  ws1 = new WebSocket(topic);
+let browser = prompt("Sur quel navigateur etes-vous ?");
 
-topic =
-  "ws://localhost:8080/ws/v2/reader/persistent/public/default/topishara/?messageId=earliest";
-let ws2 = new WebSocket(topic);
+let topics = prompt(
+  "Quel(s) topic(s) voulez-vous ecoutez ? (separer les noms par des virgules)"
+).split(",");
 
-let topicp =
-    "ws://localhost:8080/ws/v2/producer/persistent/public/default/topishara", //pour produire des messages
-  ws = new WebSocket(topicp);
+let prodBool = prompt(
+  "Voulez vous poster un message ? (répondre oui ou non)",
+  "non"
+);
 
-let sockets = [ws1, ws2];
+//console.log(topics);
 
-let message = {
-  payload: btoa("Message d'un reader sur topishara")
-};
+let sockets = topics.map(name => {
+  return new WebSocket(
+    "ws://localhost:8080/ws/v2/reader/persistent/public/default/" +
+      name.trim() +
+      "/?messageId=earliest"
+  );
+});
 
-let msg = [message];
+// console.log(sockets);
 
 for (let socket of sockets) {
   socket.onmessage = function(message) {
@@ -41,21 +44,35 @@ for (let socket of sockets) {
   };
 }
 
-// pour l'envoi de messages
-ws.onopen = function() {
-  // Send multiple messages
-  for (let msgs of msg) {
-    console.log(msgs);
-    ws.send(JSON.stringify(msgs));
-  }
-};
+if (prodBool.trim() === "oui") {
+  let topiname = prompt("Sur quel topic ?");
+  let ws = new WebSocket(
+    "ws://localhost:8080/ws/v2/producer/persistent/public/default/" + topiname
+  );
 
-// handle error
-ws.onerror = function() {
-  console.log("error");
-};
+  let messageToSend = prompt("Quel est votre message ?");
 
-// reception de messages, le producteur ne recevra que des acks
-ws.onmessage = function(message) {
-  console.log("ack received : ", message);
-};
+  let message = {
+    payload: btoa(
+      messageToSend + " ,envoye depuis " + browser + " vers " + topiname
+    ), //required
+    properties: {
+      // optionnal
+      user: "ishara"
+    }
+  };
+  ws.onopen = function() {
+    // Send multiple messages
+    ws.send(JSON.stringify(message));
+  };
+
+  // handle error
+  ws.onerror = function() {
+    console.log("error");
+  };
+
+  // reception de messages, le producteur ne recevra que des acks
+  ws.onmessage = function(message) {
+    console.log("ack received : ", message);
+  };
+}

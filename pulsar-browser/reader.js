@@ -1,14 +1,25 @@
 // reader
 "use strict";
-let topic =
-    "ws://localhost:8080/ws/v2/reader/persistent/public/default/topicoast/?messageId=earliest", // on précise à partir de quel messageid on commence à lire
-  ws1 = new WebSocket(topic);
 
-topic =
-  "ws://localhost:8080/ws/v2/reader/persistent/public/default/topishara/?messageId=earliest";
-let ws2 = new WebSocket(topic);
+let userName = prompt("Tu es qui ?");
 
-let sockets = [ws1, ws2];
+let topics = prompt(
+  "Quel(s) topic(s) voulez-vous ecoutez ? (separer les noms par des virgules"
+).split(",");
+
+//console.log(topics);
+
+let sockets = topics.map(name => {
+  return new WebSocket(
+    "ws://localhost:8080/ws/v2/reader/persistent/public/default/" +
+      name.trim() +
+      "/?readerName=" +
+      userName +
+      "&messageId=earliest"
+  );
+});
+
+console.log(sockets);
 
 for (let socket of sockets) {
   socket.onmessage = function(message) {

@@ -1,38 +1,45 @@
 //var WebSocket = require("ws"),
 "use strict";
+
+let userName = prompt("Tu es qui ?");
+let topiname = prompt("Sur quel topic voulez-vous postez ?");
+
 let topic =
-    "ws://localhost:8080/ws/v2/producer/persistent/public/default/topicoast",
+    "ws://localhost:8080/ws/v2/producer/persistent/public/default/" +
+    topiname +
+    "/?batchingEnabled=true" +
+    "&producerName=" +
+    userName,
   ws = new WebSocket(topic);
 
-let message = {
-  payload: btoa("Message du producteur à topicoast :D"), //required
-  properties: {
-    // optionnal
-    user: "ishara"
-  }
-};
+async function sendMessage() {
+  let messageToSend = await prompt("Quel est votre message ?");
+  console.log();
+  let message = await {
+    payload: btoa(
+      messageToSend + " ,envoye par " + userName + " vers " + topiname
+    ), //required
+    properties: {
+      // optionnal
+      user: "ishara"
+    }
+  };
 
-let message2 = {
-  payload: btoa("HeHOOOOOOOOOOOOOOO topicoast")
-};
+  // pour l'envoi de messages
+  ws.onopen = () => {
+    // Send multiple messages
+    ws.send(JSON.stringify(message));
+  };
 
-let msg = [message, message2];
+  // handle error
+  ws.onerror = function() {
+    console.log("error");
+  };
 
-// pour l'envoi de messages
-ws.onopen = function() {
-  // Send multiple messages
-  for (let msgs of msg) {
-    console.log(msgs);
-    ws.send(JSON.stringify(msgs));
-  }
-};
+  // reception de messages, le producteur ne recevra que des acks
+  ws.onmessage = function(message) {
+    console.log("ack received : ", message);
+  };
+}
 
-// handle error
-ws.onerror = function() {
-  console.log("error");
-};
-
-// reception de messages, le producteur ne recevra que des acks
-ws.onmessage = function(message) {
-  console.log("ack received : ", message);
-};
+sendMessage();

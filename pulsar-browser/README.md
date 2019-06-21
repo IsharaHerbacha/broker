@@ -10,20 +10,16 @@ Création url :
   `ws://broker-service-url:8080/ws/v2/reader/persistent/:tenant/:namespace/:topic`
 
 #A installer au préalable
-## installer pulsar
-`wget https://archive.apache.org/dist/pulsar/pulsar-2.3.2/apache-pulsar-2.3.2-bin.tar.gz`
-`tar xvfz apache-pulsar-2.3.2-bin.tar.gz`
-`cd apache-pulsar-2.3.2`
-## configurer pour pouvoir utiliser une websocket
-Dans conf/broker.conf mettre :
-`webSocketServiceEnabled=true`
+
+`git clone https://github.com/apache/pulsar`
+`cd pulsar`
 
 # Quickstart
 
 Pour faire communiquer les consommateurs, readers et producteurs, il faut ouvrir les fichiers html dans un navigateur et regarder dans la console.
 
 * Lancer un serveur avec `bin/pulsar standalone`
-* Lancer la websocket : `bin/pulsar-daemon start websocket`
+* Lancer la websocket (?) : `bin/pulsar-daemon start websocket`
 * Au choix:
   * prod.html lance un producteur envoyant 2 messages sur topicoast
   * cons.html lance un consommateur lisant sur topicoast et topishara
