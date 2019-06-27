@@ -1,0 +1,54 @@
+html {
+  font-family: "Times New Roman", Times, sans-serif;
+  background: rgb(255, 255, 255);
+  padding: 1rem;
+}
+
+#login {
+  font-size: 20px;
+}
+
+#redirectButton {
+  font-size: 15px;
+}
+
+#cadre {
+  border: 10px outset lightblue;
+  height: 600px;
+  width: 970px;
+}
+
+#propList {
+  text-align: left;
+  overflow: scroll;
+  height: 500px;
+  width: 960px;
+  color: rgb(49, 49, 49);
+}
+#messageList {
+  text-indent: 10px;
+  font-size: 13px;
+}
+
+#timeList {
+  font-size: 13px;
+  text-align: right;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  text-indent: 20px;
+  background-color: darkcyan;
+  height: 60px;
+}
+
+h2 {
+  font-size: 30px;
+  color: darkcyan;
+  font-weight: bold;
+  vertical-align: middle;
+  text-indent: 20px;
+  width: 960px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Chat Pulsar</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="bootstrap/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <h1 class="debut">Chat Pulsar</h1>
+
+    <div style="display:block" class="container-fluid" id="login">
+      <p>
+        <label for="userName">Nom d'utilisateur</label>
+        <input type="text" id="userName" name="userName" />
+      </p>
+      <p>
+        <label for="topicName">Nom du chat</label>
+        <input type="text" id="topicName" name="topicName" />
+      </p>
+
+      <button id="redirectButton" onclick="redirect()">
+        Aller sur le chat
+      </button>
+    </div>
+
+    <div style="display:none;" class="container-fluid" id="contenu">
+      <h2 id="topicTitle">hey</h2>
+      <table  class="table table-striped">
+          <thead>
+            <tr>
+              <th>Pseudo</th>
+              <th>Messages</th>
+            </tr>
+          </thead>
+
+          <tbody id="messageList">
+
+            </tbody>
+
+      <label for="newMessageContent">Nouveau message</label>
+      <input type="text" id="newMessageContent" name="newMessageContent" />
+      <button id="sendButton" onclick="sendMessage()">Envoyer</button>
+    </div>
+
+    <script src="chatYES.js"></script>
+  </body>
+</html>

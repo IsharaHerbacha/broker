@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Chat Pulsar</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="bootstrap/css/bootstrap.min.css"
+    />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="style.css"
+  />
+  </head>
+
+  <body>
+    <h1 class="debut" id="titre-site" data-toggle="tooltip" title="uwu" ><strong>Mute chat</h1>
+
+    <div style="display:block" class="container-fluid input-group" id="login" style="background-color: rgb(159, 243, 243)">
+     
+      <div class="col-xs-2" >
+        <label for="userName">Nom d'utilisateur</label>
+        <input data-toggle="tooltip" title="Veuillez renseigner votre nom d'utilisateur."
+          type="text"
+          id="userName"
+          class="form-control"
+          name="userName"
+          placeholder="Nom"
+        />
+      </div>
+
+      <div class="col-xs-2">
+        <label for="topicName">Nom du chat</label>
+        <input data-toggle="tooltip" title="Veuillez renseigner le nom du chat."
+          type="text"
+          id="topicName"
+          name="topicName"
+          class="form-control"
+          placeholder="Chat"
+        />
+      </div>
+
+      <br />
+      <button
+      data-toggle="tooltip" title="Aller sur le chat ! :D "
+        id="redirectButton"
+        class="btn btn-info btn-md"
+        onclick="redirect()"
+      >
+        Aller sur le chat <span class="glyphicon glyphicon-circle-arrow-right"></span> 
+      </button>
+    </div>
+
+    <div style="display:none;" class="container-fluid" class="panel panel-default" id="contenu">
+      <br>
+
+      <div id="cadre">
+        <h2 class="row" id="topicTitle"> <strong> Nom de topic par défaut</h2>
+          <hr>
+        <div class="row" id="propList" >
+          
+            <div class="col-sm-5" id="messageList"> 
+            </div>
+            <div class="col-sm-5" id="timeList"> 
+            </div>
+        </div>
+        </div>
+      <br>
+
+      <div class="col-md-1 col-md-offset-1"> 
+        <label for="newMessageContent" style ="font-size: 13px;" >Nouveau message</label>    
+      </div> 
+
+      <div class="col-md-3"> 
+          
+        <input type="text" id="newMessageContent" data-toggle="tooltip" title=" Poster un message" name="newMessageContent" />
+        <button
+        id="sendButton"
+        class="btn btn-info btn-md"
+        data-toggle="tooltip" title=" Poster un message"
+        onclick="sendMessage()"
+        >
+        Envoyer
+        </button>
+      </div> 
+
+
+    <script src="chat.js"></script>
+  </body>
+</html>

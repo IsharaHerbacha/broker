@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  pulsar:
+    ports:
+      - "6650:6650"
+      - "8080:8080"
+    image: apachepulsar/pulsar:2.3.2
+    command: bin/pulsar standalone
+    build: ./pulsar-standalone
+    container_name: "pulsar-standalone"
+    networks:
+      - local
+    volumes:
+      - $PWD/../pulsar/data:/pulsar/data
+
+  dashboard:
+    image: apachepulsar/pulsar-dashboard
+    ports:
+      - "80:80"
+    container_name: "pulsar-dashboard"
+    build: ./pulsar-dashboard
+    environment:
+      - SERVICE_URL= http://pulsar-standalone:8080
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
